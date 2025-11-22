@@ -9,13 +9,9 @@ from os import getenv
 
 # -- API hygiene: never expose URLs in UI --
 load_dotenv()
-uri = f"mongodb+srv://{getenv('DB_USER')}:{getenv('DB_PASS')}@cluster0.fgwl1wh.mongodb.net/?appName=Cluster0"
-client = MongoClient(uri, server_api=ServerApi('1'))
-db = client["businessdb"]
-collection = db["kayjayurl"]
+
 def get_api_url():
-    doc = collection.find_one({}, {"_id": 0, "url": 1})
-    return doc['url'] if doc and 'url' in doc else None
+    return getenv("uri")
 
 _API_ROOT = (get_api_url() or "http://localhost:8080").rstrip('/')
 _ENDPOINTS = {
