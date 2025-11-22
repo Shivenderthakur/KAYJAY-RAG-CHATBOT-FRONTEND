@@ -1,3 +1,3 @@
 # KAYJAY-RAG-CHATBOT-FRONTEND
-[![Watch the video]](https://github.com/Shivenderthakur/KAYJAY-RAG-CHATBOT-FRONTEND/raw/refs/heads/main/ASSIGNMENT.mp4)
+[![Watch the video]](https://github.com/Shivenderthakur/KAYJAY-RAG-CHATBOT-FRONTEND/blob/main/ASSIGNMENT.mp4)
 
