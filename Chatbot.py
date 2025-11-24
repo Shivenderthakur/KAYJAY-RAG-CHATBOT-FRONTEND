@@ -1,4 +1,4 @@
-# streamlit_rag_client.py
+
 
 import streamlit as st
 import requests
@@ -7,7 +7,7 @@ from pymongo.server_api import ServerApi
 from dotenv import load_dotenv
 from os import getenv
 
-# -- API hygiene: never expose URLs in UI --
+
 load_dotenv()
 
 def get_api_url():
@@ -31,7 +31,7 @@ def server_online():
 st.set_page_config(page_title="KayJay RAG Chatbot", layout="wide")
 st.title("KayJay RAG Chatbot — Professional Assistant")
 
-# STATE
+
 if "chat_session_id" not in st.session_state:
     st.session_state["chat_session_id"] = None
 if "history" not in st.session_state:
@@ -43,7 +43,7 @@ if "backend_online" not in st.session_state:
 if "backend_checked" not in st.session_state:
     st.session_state["backend_checked"] = True
 
-# --- Chat input form ---
+
 with st.form(key="chat_form", clear_on_submit=True):
     user_input = st.text_area(
         "Your message:",
@@ -63,7 +63,7 @@ def render_chat():
         with st.chat_message("user" if is_user else "assistant"):
             st.markdown(msg["content"])
 
-# --- Sidebar: Session resume & status ---
+
 with st.sidebar:
     st.header("Session Management")
     session_id_input = st.text_input("Enter Session ID to resume:", key="reconnect_box")
@@ -117,7 +117,6 @@ with st.sidebar:
         st.rerun()
     st.caption("KayJay Global Solutions © 2025")
 
-# --- Process message ---
 if submit_btn and user_input.strip():
     with st.spinner("Processing..."):
         # Assign session if none
@@ -159,7 +158,7 @@ if submit_btn and user_input.strip():
             add_to_history("assistant", "Failed to connect to backend. Try again later.")
     st.rerun()
 
-# --- Output history ---
+
 st.session_state["history"] = [
     h for h in st.session_state["history"]
     if h["content"] and h["content"].strip()
